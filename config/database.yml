@@ -1,0 +1,26 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: finance_tracker_6_development
+  username: postgres
+  password: "omnipod"
+  
+test:
+  <<: *default
+  database: finance_tracker_6_test
+  username: postgres
+  password: "omnipod"
+
+
+production:
+  <<: *default
+  database: finance_tracker_6_production
+  username: finance_tracker_6
+  password: <%= ENV['FINANCE_TRACKER_6_DATABASE_PASSWORD'] %>
